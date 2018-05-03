@@ -1,0 +1,84 @@
+<div>
+    {% if block_id %}
+        <a href="#" class="text-danger delete-button float-right" title="Remove"><i class="fas fa-times"></i></a>
+    {% endif %}
+    <div class="row parameters">
+        <div class="col-lg-4">
+            <form class="form_params">
+                <div class="form-group">
+                    <label for="participantSettings{{ block_id }}">Choose participant</label>
+                    <select class="selectpicker form-control" id="participantSettings{{ block_id }}"
+                            name="participant_id"
+                            multiple required>
+                        {% for participant in participants %}
+                            <option value="{{ participant }}">{{ participant }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="aoiSettings{{ block_id }}">AOI settings</label>
+                    <select class="custom-select aoi-settings" id="aoiSettings{{ block_id }}" name="aoi_setting">
+                        <option value="all">Show all</option>
+                        <option value="filtered" selected>Only those that fit the filter</option>
+                        <option value="selection">Select AOIs</option>
+                    </select>
+                </div>
+                <div class="form-group hidden">
+                    <label for="aoiSelect{{ block_id }}">Choose AOI</label>
+                    <select class="selectpicker form-control" id="aoiSelect{{ block_id }}" name="aois" multiple>
+                        {% for aoi in aois %}
+                            <option value="{{ aoi }}">{{ aoi }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label for="transMin{{ block_id }}">Transition count (optional)</label>&nbsp;
+                <a data-toggle="tooltip" data-placement="top" title="This parameter determines the threshold values of transitions for each selected participant."><i class="fas fa-info-circle"></i></a>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" type="number" placeholder="Min" id="transMin{{ block_id }}"
+                               name="min">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" type="number" placeholder="Max" id="transMax{{ block_id }}"
+                               name="max">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div class="participants-list">
+                <a data-toggle="collapse" href="#collapsing{{ block_id }}" role="button" aria-expanded="false"
+                   aria-controls="collapsing"><i class="fas fa-angle-down"></i> Participants list</a>
+                <div class="collapse" id="collapsing{{ block_id }}">
+                    <div class="participants-table">
+                        <table class="table">
+                            <thead>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Shown</th>
+                            </thead>
+                            <tbody>
+                            {% for participant in participants %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ participant }}</td>
+                                    <td>
+                                        <div data-participant-id="{{ participant }}" class="indicator not-selected"
+                                             title="Not selected"></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="visualization">
+                <p>The visualization will be displayed here, please set the filter first.</p>
+            </div>
+        </div>
+    </div>
+    <div class="line"></div>
+</div>

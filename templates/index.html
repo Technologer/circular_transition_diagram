@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="starter-template">
+        <h1>Circular Heat Map Transition Diagram</h1>
+        <p class="lead">The software provides the visualization of eyetracking data which has been exported from the
+            Tobii Studio</p>
+        <p>Please continue with uploading a file (.tsv) from your computer</p>
+        <form action="/upload" method="POST"
+              enctype="multipart/form-data">
+            <input type="file" name="file"/>
+            <input class="btn btn-success" type="submit" value="Upload"/>
+        </form>
+    </div>
+{% endblock %}

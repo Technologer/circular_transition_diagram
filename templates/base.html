@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='bootstrap/assets/img/favicons/favicon-32x32.png') }}">
+    <title>Circular heat map transition diagram</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Styles for FontAwesome -->
+    <link href="{{ url_for('static', filename='fontawesome/css/fontawesome-all.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <!-- Styles for visualization -->
+    <link href="{{ url_for('static', filename='css/visualization.css') }}" rel="stylesheet">
+
+{% block head %}
+{% endblock %}
+</head>
+
+<body>
+<!-- Loading animation -->
+<div class="spinner-wrapper">
+    <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">CHMTD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mr-auto"></ul>
+        </div>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    {% block main %}{% endblock %}
+</main><!-- /.container -->
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ url_for('static', filename='bootstrap/assets/js/vendor/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap/assets/js/vendor/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+<script>
+    let loading = $('.spinner-wrapper').hide();
+
+    $(document).on('ajaxStart.firstCall', (function () {
+            ajaxLoadTimeout = setTimeout(function() {
+                    loading.fadeIn();
+                }, 350);
+        }));
+    $(document).on('ajaxStop.firstCall', (function () {
+            clearTimeout(ajaxLoadTimeout);
+            loading.fadeOut();
+        }));
+</script>
+{% block script %}{% endblock %}
+</body>
+</html>
