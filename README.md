@@ -1,1 +1,1 @@
-# circular_transition_diagram
+# Circular heatmap transition diagram
