@@ -71,6 +71,7 @@ class Metrics:
 
         return {'participants_list': participants_list, 'transitions': matrix}
 
+    # Get information about all
     def get_stats(self, participants, aois):
         stats = []
         participants_data = None
