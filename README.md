@@ -3,7 +3,7 @@
 The tool provides a visualization by the circular heatmap diagram of transitions presented by T.Blascheck in her [work.](https://dl.acm.org/citation.cfm?doid=2509315.2509326)
 
 
-[The tool is avalible online here](https://circular-transition-diagram.herokuapp.com)
+[The tool is available online here](https://circular-transition-diagram.herokuapp.com)
 
 Dependencies:
 * Python 3.5+
@@ -11,12 +11,12 @@ Dependencies:
 * Numpy library
 * Pandas library
 
-For local instalation clone master branch and install all dependencies by running following:
+For local installation clone master branch and install all dependencies by running following:
 ```angular2html
 pip install -r requirements.txt
 ``````
 
-To run aplication run:
+To run aplication:
 ```angular2html
 python main.py
 ``````
